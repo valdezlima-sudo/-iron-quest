@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"/>
-<meta name="theme-color" content="#07090d"/>
+<meta name="theme-color" content="#05070b"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <meta name="apple-mobile-web-app-title" content="IRON QUEST"/>
@@ -12,195 +12,113 @@
 <title>IRON QUEST</title>
 <style>
 :root{
---bg:#07090d;--panel:#0b1118;--panel2:#101722;--gold:#eeb34b;--gold2:#ffd98b;
---red:#bc2528;--red2:#f0444b;--blue:#2aa9df;--green:#35d77b;--text:#f6f0df;
---muted:#98a2b3;--line:#5f451d;--soft:#202a36;--orange:#f79c2d
+ --bg:#05070b; --panel:#0a0f16; --panel2:#101722; --gold:#e5a93b; --gold2:#ffd36a;
+ --red:#bb2529; --red2:#ed3f45; --blue:#1ea9e6; --green:#2ed46c; --text:#f5f1e8;
+ --muted:#9ca6b4; --border:#72501d;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;background:#030507;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+html,body{margin:0;background:#020406;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 body{min-height:100vh}
-.app{max-width:430px;margin:auto;min-height:100vh;background:
-radial-gradient(circle at 50% -8%,rgba(238,179,75,.13),transparent 24%),
-linear-gradient(180deg,#070a0f,#040609 70%);
-padding:calc(env(safe-area-inset-top) + 10px) 14px calc(92px + env(safe-area-inset-bottom))}
+.app{width:min(100%,430px);min-height:100vh;margin:0 auto;background:linear-gradient(#06090d,#030508);padding-bottom:calc(82px + env(safe-area-inset-bottom))}
 .screen{display:none}.screen.active{display:block}
-.topbar{display:grid;grid-template-columns:1.2fr 1fr auto;gap:8px;align-items:center}
-.pill{background:linear-gradient(#111925,#0a1017);border:1px solid #3d4654;border-radius:13px;padding:10px 12px;box-shadow:0 8px 25px #0005}
-.pill strong{color:var(--gold2)}
-.brand{text-align:center;padding:14px 0 8px}
-.brand h1{margin:0;font-family:ui-monospace,monospace;font-weight:1000;font-size:34px;letter-spacing:-2px;color:var(--gold2);text-shadow:0 2px 0 #6f2b21}
-.brand small{color:#d6c7a8;letter-spacing:2px;font-size:9px}
-.card{background:linear-gradient(180deg,rgba(17,24,34,.98),rgba(9,14,20,.98));border:1px solid #343e4c;border-radius:18px;padding:14px;margin:12px 0;box-shadow:0 12px 30px #0006}
-.goldcard{border-color:#715324;box-shadow:inset 0 0 0 1px rgba(238,179,75,.15),0 12px 30px #0006}
-.hero{position:relative;overflow:hidden;min-height:410px;padding:0;background:
-radial-gradient(circle at 35% 20%,rgba(247,156,45,.18),transparent 38%),
-linear-gradient(145deg,#101824,#080c12 62%)}
-.hero:after{content:"";position:absolute;inset:auto 0 0 0;height:44%;background:linear-gradient(transparent,rgba(4,6,9,.88));pointer-events:none}
-.heroImg{position:absolute;left:-8px;bottom:0;height:410px;width:auto;image-rendering:pixelated;filter:saturate(.8) contrast(1.08) drop-shadow(0 12px 20px #0008)}
-.profileChip{position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:10px;z-index:2}
-.profileChip img{width:48px;height:48px;border-radius:12px;object-fit:cover;image-rendering:pixelated;border:1px solid #8b6a30}
-.profileChip .name{font-size:12px;color:#cfd7e1}.profileChip .title{font-size:15px;font-weight:800}
-.heroStats{position:absolute;right:14px;top:80px;width:48%;z-index:2}
-.statline{margin:12px 0}.label{font-size:11px;color:#d0d7e2;font-weight:700}.label span{float:right;color:#fff}
-.bar{height:10px;background:#19222d;border:1px solid #384351;border-radius:999px;overflow:hidden;margin-top:5px}
-.fill{height:100%}.hp{background:linear-gradient(90deg,#ff5461,#ef3947)}.xp{background:linear-gradient(90deg,#39bbed,#268ed2)}.gold{background:linear-gradient(90deg,#e69b2b,#ffd56a)}.green{background:linear-gradient(90deg,#29c96d,#4ee78c)}
-.streak{margin-top:20px}.streak strong{display:block;font-size:28px;color:var(--gold2)}
-.quote{position:absolute;right:14px;bottom:58px;width:48%;z-index:2;color:#d1d7df;font-size:11px;line-height:1.5}
-.sectionTitle{font-weight:900;letter-spacing:.5px;color:var(--gold2);font-size:16px}
-.quest{display:grid;grid-template-columns:70px 1fr;gap:12px;align-items:center}
-.questIcon{height:70px;border-radius:14px;background:#171006;border:1px solid #6e5226;display:grid;place-items:center;font-size:34px}
-.quest h3{margin:0 0 5px;font-size:20px}.muted{font-size:12px;color:var(--muted)}
-.btn{width:100%;border:0;border-radius:13px;padding:15px;font-weight:900;font-size:17px;color:#fff;background:linear-gradient(180deg,#da373c,#ac1f25);box-shadow:0 5px 0 #5c1014;margin-top:12px}
-.btn:active{transform:translateY(2px);box-shadow:0 3px 0 #5c1014}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.metric{background:#0e151e;border:1px solid #293441;border-radius:14px;padding:12px}.metric b{display:block;color:var(--gold2);font-size:20px;margin-top:4px}
-.campaign{height:150px;position:relative;overflow:hidden;background:
-radial-gradient(circle at 70% 70%,rgba(246,145,49,.22),transparent 24%),
-linear-gradient(135deg,#0d1926,#121519 60%,#22150d)}
-.campaign:before{content:"";position:absolute;inset:0;background:
-linear-gradient(90deg,transparent 0 35%,rgba(255,255,255,.03) 35% 36%,transparent 36% 70%,rgba(255,255,255,.03) 70% 71%,transparent 71%)}
-.campaign .path{position:absolute;left:30px;right:30px;bottom:30px;height:3px;background:#72511c}.node{position:absolute;bottom:21px;width:20px;height:20px;border-radius:50%;border:2px solid #ffd36b;background:#253245}.node.done{background:#bd2c30}
-.screenHeader{padding:8px 0 2px}.screenHeader h2{margin:0;color:var(--gold2);font-size:26px}.screenHeader p{margin:4px 0 0;color:var(--muted);font-size:12px}
-.exerciseHero{display:grid;grid-template-columns:110px 1fr;gap:12px;align-items:center}.exerciseHero img{width:110px;height:150px;object-fit:cover;image-rendering:pixelated;border-radius:14px;border:1px solid #5d4826}
-.setHeader,.setRow{display:grid;grid-template-columns:1fr 1fr 1fr .7fr;gap:7px}.setHeader{color:var(--muted);font-size:11px;text-align:center;margin-top:10px}
-.cell{background:#121a24;border:1px solid #2d3744;border-radius:9px;padding:10px;text-align:center;font-weight:800}.doneCell{background:#173a28;border-color:#2fa760}
-.timer{display:flex;align-items:center;justify-content:space-between}.timer strong{font-size:34px;color:var(--gold2)}.timer button{width:52px;height:52px;border-radius:50%;border:1px solid #755728;background:#171006;color:var(--gold2);font-size:20px}
-.charHero{display:grid;grid-template-columns:145px 1fr;gap:12px;align-items:end}.charHero img{width:145px;image-rendering:pixelated;border-radius:16px;border:1px solid #6b512b;background:#10151c}
-.attributes .row{display:grid;grid-template-columns:92px 42px 1fr 32px 32px;gap:6px;align-items:center;margin:10px 0}.name{font-size:11px;font-weight:800}.lv{font-size:11px}.segments{display:grid;grid-template-columns:repeat(10,1fr);gap:2px}.seg{height:14px;background:#26313d;border-radius:2px}.seg.on{background:#ef4750}.pm{height:31px;border-radius:8px;border:1px solid #6f542b;background:#171006;color:var(--gold2);font-size:18px}
-.chart{height:125px;display:flex;align-items:flex-end;justify-content:space-around}.col{width:25px;background:#2caadf;border-radius:5px 5px 0 0;position:relative}.col span{position:absolute;top:100%;left:50%;transform:translateX(-50%);font-size:9px;color:var(--muted);margin-top:6px}
-.ach{display:grid;grid-template-columns:62px 1fr 26px;gap:12px;align-items:center}.achIcon{width:62px;height:62px;border-radius:14px;background:#171007;border:1px solid #6c5127;display:grid;place-items:center;font-size:30px}.ach h4{margin:0;color:var(--gold2)}.check{color:#47df7f;font-size:20px}
-.nav{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:min(430px,100%);height:82px;padding-bottom:env(safe-area-inset-bottom);display:grid;grid-template-columns:repeat(5,1fr);background:rgba(7,10,14,.98);backdrop-filter:blur(16px);border-top:1px solid #29313d;z-index:20}.nav button{border:0;background:transparent;color:#8993a3;font-size:10px}.nav .ico{display:block;font-size:20px;margin-bottom:4px}.nav button.on{color:var(--gold2);background:#171108}
-.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:95px;background:#121923;border:1px solid #6d542b;color:#ffe0a0;padding:10px 13px;border-radius:10px;display:none;z-index:30}
+.homeExact{position:relative;background:#000;min-height:100vh}
+.homeExact img.ref{display:block;width:100%;height:auto}
+.hot{position:absolute;background:transparent;border:0;z-index:3}
+.hot.start{left:7%;top:61.2%;width:86%;height:7.2%}
+.hot.character{left:27%;top:72%;width:22%;height:8.7%}
+.hot.progress{left:51%;top:72%;width:22%;height:8.7%}
+.hot.ach{left:76%;top:72%;width:21%;height:8.7%}
+.hot.quest{left:3%;top:72%;width:22%;height:8.7%}
+.card{margin:14px;border-radius:16px;background:linear-gradient(180deg,#101722,#080c12);border:1px solid #3a4655;box-shadow:0 10px 26px #0007;padding:14px}
+.gold{border-color:#72501d;box-shadow:inset 0 0 0 1px rgba(229,169,59,.18),0 10px 26px #0007}
+.head{padding:18px 16px 4px}.head h2{margin:0;color:var(--gold2);font-size:28px;font-weight:900}.head p{margin:5px 0 0;color:var(--muted);font-size:12px}
+.topQuest{height:210px;position:relative;overflow:hidden;padding:0;background:#0b1017}
+.topQuest:before{content:"";position:absolute;inset:0;background:url('hero-scene.png') center/cover no-repeat;filter:saturate(.9) brightness(.7)}
+.topQuest:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,7,11,.12),rgba(5,7,11,.7) 62%,rgba(5,7,11,.95))}
+.topQuest .copy{position:absolute;z-index:2;right:16px;top:30px;width:47%}
+.topQuest h3{margin:0;color:var(--gold2);font-size:24px}.small{font-size:12px;color:var(--muted);line-height:1.45}
+.setHeader,.setRow{display:grid;grid-template-columns:1fr 1fr 1fr .8fr;gap:7px}
+.setHeader{font-size:11px;color:var(--muted);text-align:center;margin-bottom:7px}
+.cell{background:#141d28;border:1px solid #31404f;border-radius:9px;padding:11px;text-align:center;font-weight:800}
+.check{color:#2aa9df}.check.done{background:#184329;color:#fff;border-color:#32a963}
+.timer{display:flex;align-items:center;justify-content:space-between}.timer strong{font-size:38px;color:var(--gold2)}
+.timer button{width:54px;height:54px;border-radius:50%;border:1px solid #7a5b29;background:#171006;color:var(--gold2);font-size:20px}
+.btn{width:100%;padding:15px;border:0;border-radius:11px;background:linear-gradient(#d83b3d,#a61f24);box-shadow:0 4px 0 #5d1014;color:#ffe1a0;font-size:17px;font-weight:900}
+.btn:active{transform:translateY(2px);box-shadow:0 2px 0 #5d1014}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:14px}
+.characterHero{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:end}.characterHero img{width:150px;height:260px;object-fit:cover;object-position:45% 50%;border-radius:14px;border:1px solid #735324}
+.level{font-size:48px;color:var(--gold2);font-weight:900}.bar{height:11px;background:#1a2430;border:1px solid #354452;border-radius:999px;overflow:hidden}.fill{height:100%}.xp{background:#22a8e6}.green{background:#2fd271}.red{background:#f0424c}.goldfill{background:#e9ad3b}
+.metrics{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.metric{padding:10px;background:#101722;border:1px solid #2f3b49;border-radius:12px}.metric span{display:block;color:var(--muted);font-size:10px}.metric b{font-size:16px;color:#fff}
+.attributes .row{display:grid;grid-template-columns:90px 42px 1fr 31px 31px;gap:6px;align-items:center;margin:10px 0}.segments{display:grid;grid-template-columns:repeat(10,1fr);gap:2px}.seg{height:14px;background:#26313d;border-radius:2px}.seg.on{background:#e63e48}.pm{height:31px;border:1px solid #72501d;border-radius:7px;background:#171006;color:var(--gold2);font-size:18px}
+.statsRow{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:14px}.stat{padding:12px;border-radius:12px;background:#0e151e;border:1px solid #2c3947;text-align:center}.stat span{font-size:10px;color:var(--muted)}.stat b{display:block;font-size:20px;color:var(--gold2);margin-top:3px}
+.chart{height:150px;display:flex;align-items:flex-end;justify-content:space-around;padding:12px 4px 22px}.col{width:28px;border-radius:4px 4px 0 0;background:#20a8e0;position:relative}.col span{position:absolute;top:100%;left:50%;transform:translateX(-50%);font-size:9px;color:var(--muted);margin-top:6px}
+.ach{display:grid;grid-template-columns:64px 1fr 26px;gap:12px;align-items:center}.achIcon{width:64px;height:64px;border-radius:14px;background:#171006;border:1px solid #735324;display:grid;place-items:center;font-size:30px}.ach h4{margin:0;color:var(--gold2)}.ok{color:#3fe07c;font-size:22px}
+.nav{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:min(430px,100%);height:82px;padding-bottom:env(safe-area-inset-bottom);display:grid;grid-template-columns:repeat(5,1fr);background:rgba(4,7,11,.98);border-top:1px solid #27313c;z-index:20}.nav button{border:0;background:transparent;color:#8d97a7;font-size:10px}.nav .ico{display:block;font-size:20px;margin-bottom:4px}.nav button.on{color:var(--gold2);background:#1d1308}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:94px;background:#131b25;border:1px solid #72501d;color:#ffe09d;padding:10px 13px;border-radius:10px;display:none;z-index:30}
 </style>
 </head>
 <body>
 <div class="app">
 
 <section id="HOME" class="screen active">
-<div class="topbar">
-  <div class="pill">🔥 <strong>Lv. <span data-level>24</span></strong></div>
-  <div class="pill">💎 <strong>1,250</strong></div>
-  <div class="pill">⚙️</div>
-</div>
-<div class="brand"><h1>IRON QUEST</h1><small>TRAIN • EVOLVE • CONQUER</small></div>
-
-<div class="card goldcard hero">
-  <div class="profileChip">
-    <img src="pixel-portrait.png"/>
-    <div><div class="title">VALDEZ</div><div class="name">ATHLETE</div></div>
+  <div class="homeExact">
+    <img class="ref" src="home-reference.png" alt="IRON QUEST Home"/>
+    <button class="hot start" aria-label="Iniciar treino" onclick="go('QUEST')"></button>
+    <button class="hot quest" aria-label="Treino de hoje" onclick="go('QUEST')"></button>
+    <button class="hot character" aria-label="Meu personagem" onclick="go('CHAR')"></button>
+    <button class="hot progress" aria-label="Progresso" onclick="go('PROGRESS')"></button>
+    <button class="hot ach" aria-label="Conquistas" onclick="go('ACH')"></button>
   </div>
-  <img class="heroImg" src="pixel-avatar.png"/>
-  <div class="heroStats">
-    <div class="statline"><div class="label">HP <span>100/100</span></div><div class="bar"><div class="fill hp" style="width:100%"></div></div></div>
-    <div class="statline"><div class="label">XP <span><span data-xp>320</span>/500</span></div><div class="bar"><div id="homeXp" class="fill xp"></div></div></div>
-    <div class="streak"><div class="label">🔥 STREAK</div><strong><span data-streak>5</span> DIAS</strong></div>
-  </div>
-  <div class="quote">“Disciplina hoje. Liberdade amanhã.”</div>
-</div>
-
-<div class="card goldcard">
-  <div class="sectionTitle">MISSÃO DO DIA</div>
-  <div class="quest" style="margin-top:12px">
-    <div class="questIcon">🏋️</div>
-    <div><h3>UPPER PUSH</h3><div class="muted">Peitoral • Ombros • Tríceps</div><div class="muted">5 exercícios • 18 séries • ~55 min</div></div>
-  </div>
-  <button class="btn" onclick="go('QUEST')">INICIAR TREINO</button>
-</div>
-
-<div class="grid2">
-  <div class="metric"><div class="muted">TREINOS</div><b data-workouts>12</b></div>
-  <div class="metric"><div class="muted">CONSISTÊNCIA</div><b>87%</b></div>
-</div>
-
-<div class="card campaign goldcard">
-  <div class="sectionTitle">CAMPANHA ATUAL</div>
-  <div style="font-size:22px;font-weight:900;margin-top:4px">FORTALEZA DO HÁBITO</div>
-  <div class="muted">Semana 2 de 4</div>
-  <div class="path"></div>
-  <div class="node done" style="left:28px"></div>
-  <div class="node done" style="left:95px"></div>
-  <div class="node" style="left:162px"></div>
-  <div class="node" style="left:229px"></div>
-  <div class="node" style="left:296px"></div>
-</div>
 </section>
 
 <section id="QUEST" class="screen">
-<div class="screenHeader"><h2>UPPER PUSH</h2><p>Peitoral • Ombros • Tríceps</p></div>
-<div class="card exerciseHero goldcard">
-  <img src="pixel-avatar.png"/>
-  <div><div class="sectionTitle" id="exName">SUPINO RETO</div><div class="muted" id="exMuscle">Peitoral (principal)</div><div class="muted" style="margin-top:9px">Objetivo: 8–12 reps</div></div>
-</div>
-<div class="card">
-  <div class="setHeader"><div>SÉRIE</div><div>KG</div><div>REPS</div><div>✓</div></div>
-  <div id="setRows"></div>
-</div>
-<div class="card timer"><div><div class="muted">DESCANSO</div><strong id="timer">01:30</strong></div><button id="timerBtn" onclick="toggleTimer()">▶</button></div>
-<div class="grid2"><button class="btn" onclick="prevEx()">← ANTERIOR</button><button class="btn" onclick="nextEx()">PRÓXIMO →</button></div>
-<button class="btn" onclick="completeQuest()">CONCLUIR TREINO</button>
+  <div class="head"><h2>UPPER PUSH</h2><p>Peitoral • Ombros • Tríceps</p></div>
+  <div class="card gold topQuest">
+    <div class="copy"><h3 id="exName">SUPINO RETO</h3><div class="small" id="exMuscle">Peitoral (principal)</div><div class="small" style="margin-top:10px">Objetivo: 8–12 reps<br/>Foco: Hipertrofia</div></div>
+  </div>
+  <div class="card">
+    <div class="setHeader"><div>SÉRIE</div><div>KG</div><div>REPS</div><div>✓</div></div>
+    <div id="sets"></div>
+  </div>
+  <div class="card timer"><div><div class="small">TEMPO DE DESCANSO</div><strong id="timer">01:30</strong></div><button id="timerBtn" onclick="toggleTimer()">▶</button></div>
+  <div class="two"><button class="btn" onclick="prevEx()">← ANTERIOR</button><button class="btn" onclick="nextEx()">PRÓXIMO →</button></div>
+  <div style="padding:0 14px 18px"><button class="btn" onclick="completeQuest()">CONCLUIR TREINO</button></div>
 </section>
 
 <section id="CHAR" class="screen">
-<div class="screenHeader"><h2>PERSONAGEM</h2><p>Seu perfil de treinamento</p></div>
-<div class="card charHero goldcard">
-  <img src="pixel-avatar.png"/>
-  <div>
-    <div style="font-size:28px;font-weight:900;color:var(--gold2)">Lv. <span data-level>24</span></div>
-    <div class="bar"><div id="charXp" class="fill xp"></div></div>
-    <div class="muted"><span data-xp>320</span>/500 XP</div>
-    <div class="grid2" style="margin-top:12px">
-      <div class="metric"><div class="muted">PESO</div><b style="font-size:15px">83 kg</b></div>
-      <div class="metric"><div class="muted">ALTURA</div><b style="font-size:15px">1.70 m</b></div>
+  <div class="head"><h2>PERSONAGEM</h2><p>Seu herói representa sua progressão de treino.</p></div>
+  <div class="card gold characterHero">
+    <img src="character.png" alt="Personagem"/>
+    <div><div class="level">24</div><div class="small">LEVEL</div><div class="bar" style="margin-top:8px"><div class="fill xp" id="charXp"></div></div><div class="small"><span data-xp>320</span>/500 XP</div>
+      <div class="metrics"><div class="metric"><span>PESO</span><b>83 kg</b></div><div class="metric"><span>ALTURA</span><b>1.70 m</b></div><div class="metric"><span>IDADE</span><b>33</b></div><div class="metric"><span>CLASSE</span><b>Athlete</b></div></div>
     </div>
   </div>
-</div>
-<div class="card attributes">
-  <div class="sectionTitle">ATRIBUTOS MUSCULARES</div>
-  <div class="muted">+ / − controla a prioridade do bloco.</div>
-  <div id="muscleRows"></div>
-</div>
+  <div class="card attributes"><div style="font-weight:900;color:var(--gold2);font-size:17px">ATRIBUTOS MUSCULARES</div><div class="small">Ajuste a prioridade do bloco com + e −.</div><div id="muscles"></div></div>
 </section>
 
 <section id="PROGRESS" class="screen">
-<div class="screenHeader"><h2>PROGRESSO</h2><p>Sua evolução no IRON QUEST</p></div>
-<div class="card goldcard">
-  <div class="grid2">
-    <div><div class="muted">LEVEL</div><div style="font-size:52px;font-weight:900;color:var(--gold2)" data-level>24</div></div>
-    <div><div class="muted">XP ATUAL</div><div style="font-size:26px;font-weight:800"><span data-xp>320</span>/500</div><div class="bar"><div id="progressXp" class="fill gold"></div></div></div>
-  </div>
-</div>
-<div class="card">
-  <div class="sectionTitle">TREINOS DA SEMANA</div>
-  <div class="chart">
-    <div class="col" style="height:42%"><span>SEG</span></div>
-    <div class="col" style="height:70%"><span>TER</span></div>
-    <div class="col" style="height:84%"><span>QUA</span></div>
-    <div class="col" style="height:28%"><span>QUI</span></div>
-    <div class="col" style="height:58%"><span>SEX</span></div>
-    <div class="col" style="height:15%"><span>SÁB</span></div>
-    <div class="col" style="height:5%"><span>DOM</span></div>
-  </div>
-</div>
-<div class="grid2">
-  <div class="metric"><div class="muted">TREINOS</div><b data-workouts>12</b></div>
-  <div class="metric"><div class="muted">STREAK</div><b><span data-streak>5</span> dias</b></div>
-</div>
+  <div class="head"><h2>PROGRESSO</h2><p>Geral • Músculos • Histórico</p></div>
+  <div class="card gold"><div style="font-size:12px;color:var(--muted)">NÍVEL</div><div style="display:flex;align-items:center;gap:18px"><div class="level">24</div><div style="flex:1"><div class="small"><span data-xp>320</span>/500 XP</div><div class="bar"><div class="fill goldfill" id="progressXp"></div></div></div></div></div>
+  <div class="statsRow"><div class="stat"><span>TREINOS</span><b data-workouts>12</b></div><div class="stat"><span>VOLUME</span><b>28.5t</b></div><div class="stat"><span>STREAK</span><b data-streak>5</b></div></div>
+  <div class="card"><div style="font-weight:900;color:var(--gold2)">TREINOS DA SEMANA</div><div class="chart"><div class="col" style="height:42%"><span>SEG</span></div><div class="col" style="height:72%"><span>TER</span></div><div class="col" style="height:86%"><span>QUA</span></div><div class="col" style="height:38%"><span>QUI</span></div><div class="col" style="height:66%"><span>SEX</span></div><div class="col" style="height:30%"><span>SÁB</span></div><div class="col" style="height:10%"><span>DOM</span></div></div></div>
+  <div class="card"><div style="font-weight:900;color:var(--gold2)">VOLUME POR GRUPO MUSCULAR</div><div id="volumes"></div></div>
 </section>
 
 <section id="ACH" class="screen">
-<div class="screenHeader"><h2>CONQUISTAS</h2><p>Recompensas desbloqueadas</p></div>
-<div id="achRows"></div>
+  <div class="head"><h2>CONQUISTAS</h2><p>Todas • Geral • Treino • Especiais</p></div>
+  <div id="achievements"></div>
 </section>
 
 <div id="toast" class="toast"></div>
 <nav class="nav">
-<button class="on" data-target="HOME" onclick="go('HOME',this)"><span class="ico">⌂</span>INÍCIO</button>
-<button data-target="QUEST" onclick="go('QUEST',this)"><span class="ico">⚔️</span>QUESTS</button>
-<button data-target="CHAR" onclick="go('CHAR',this)"><span class="ico">♟</span>PERSONAGEM</button>
-<button data-target="PROGRESS" onclick="go('PROGRESS',this)"><span class="ico">▥</span>PROGRESSO</button>
-<button data-target="ACH" onclick="go('ACH',this)"><span class="ico">🏆</span>CONQUISTAS</button>
+<button class="on" data-target="HOME" onclick="go('HOME')"><span class="ico">⌂</span>INÍCIO</button>
+<button data-target="QUEST" onclick="go('QUEST')"><span class="ico">⚔️</span>QUESTS</button>
+<button data-target="CHAR" onclick="go('CHAR')"><span class="ico">♟</span>PERSONAGEM</button>
+<button data-target="PROGRESS" onclick="go('PROGRESS')"><span class="ico">▥</span>PROGRESSO</button>
+<button data-target="ACH" onclick="go('ACH')"><span class="ico">🏆</span>CONQUISTAS</button>
 </nav>
 </div>
+
 <script>
 const EX=[
 {name:'SUPINO RETO',muscle:'Peitoral',sets:[[60,12],[60,10],[60,10],[60,8]]},
@@ -209,22 +127,24 @@ const EX=[
 {name:'ELEVAÇÃO LATERAL',muscle:'Ombros',sets:[[10,15],[10,12],[10,12]]},
 {name:'TRÍCEPS CORDA',muscle:'Braços',sets:[[25,15],[25,12],[25,12]]}
 ];
-const DEF={level:24,xp:320,streak:5,workouts:12,done:{},focus:{Peitoral:14,Ombros:12,Costas:10,Braços:12,Core:8,Quadríceps:12,Glúteos:14,Posteriores:11,Panturrilhas:8}};
-let st=JSON.parse(localStorage.getItem('ironquest_v3')||'null')||structuredClone(DEF),ei=0,secs=90,running=false,timerInt=null;
-function save(){localStorage.setItem('ironquest_v3',JSON.stringify(st));renderAll()}
+const DEFAULT={xp:320,level:24,streak:5,workouts:12,done:{},focus:{Peitoral:14,Ombros:12,Costas:10,Braços:12,Core:8,Quadríceps:12,Glúteos:14,Posteriores:11,Panturrilhas:8}};
+let state=JSON.parse(localStorage.getItem('iq_v4')||'null')||structuredClone(DEFAULT), ex=0, secs=90, running=false, intv=null;
+function save(){localStorage.setItem('iq_v4',JSON.stringify(state));renderAll()}
 function toast(t){let e=document.getElementById('toast');e.textContent=t;e.style.display='block';setTimeout(()=>e.style.display='none',1300)}
 function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('on',b.dataset.target===id));scrollTo(0,0)}
-function addXP(n){st.xp+=n;while(st.xp>=500){st.xp-=500;st.level++;toast('LEVEL UP! Lv. '+st.level)}}
-function toggleSet(i){let k=ei+'-'+i,was=!!st.done[k];st.done[k]=!was;addXP(was?-10:10);if(!was){secs=90;running=true;runTimer();toast('+10 XP')}save()}
-function renderQuest(){let e=EX[ei];document.getElementById('exName').textContent=e.name;document.getElementById('exMuscle').textContent=e.muscle+' (principal)';document.getElementById('setRows').innerHTML=e.sets.map((x,i)=>{let d=!!st.done[ei+'-'+i];return `<div class="setRow" style="margin-top:7px"><div class="cell">${i+1}</div><div class="cell">${x[0]}</div><div class="cell">${x[1]}</div><button class="cell ${d?'doneCell':''}" onclick="toggleSet(${i})">${d?'✓':'○'}</button></div>`}).join('')}
-function prevEx(){ei=Math.max(0,ei-1);renderQuest()} function nextEx(){ei=Math.min(EX.length-1,ei+1);renderQuest()}
-function runTimer(){clearInterval(timerInt);if(!running)return;timerInt=setInterval(()=>{secs--;if(secs<=0){secs=90;running=false;clearInterval(timerInt)}renderTimer()},1000)}
-function toggleTimer(){running=!running;runTimer();renderTimer()} function renderTimer(){let m=String(Math.floor(secs/60)).padStart(2,'0'),s=String(secs%60).padStart(2,'0');document.getElementById('timer').textContent=m+':'+s;document.getElementById('timerBtn').textContent=running?'Ⅱ':'▶'}
-function completeQuest(){let total=EX.reduce((a,e)=>a+e.sets.length,0),done=Object.values(st.done).filter(Boolean).length;if(done<total){toast('Complete todas as séries primeiro.');return}addXP(150);st.workouts++;st.streak++;st.done={};ei=0;save();go('PROGRESS');toast('TREINO CONCLUÍDO! +150 XP')}
-function adjust(m,d){st.focus[m]=Math.max(1,Math.min(20,st.focus[m]+d));save()}
-function renderMuscles(){document.getElementById('muscleRows').innerHTML=Object.entries(st.focus).map(([m,v])=>`<div class="row"><div class="name">${m}</div><div class="lv">Lv.${v}</div><div class="segments">${Array.from({length:10},(_,i)=>`<i class="seg ${i<Math.round(v/2)?'on':''}"></i>`).join('')}</div><button class="pm" onclick="adjust('${m}',-1)">−</button><button class="pm" onclick="adjust('${m}',1)">+</button></div>`).join('')}
-function renderAch(){let a=[['🏋️','PRIMEIRO TREINO','Conclua seu primeiro treino.',true],['🔥','STREAK 3','Treine 3 dias seguidos.',st.streak>=3],['🔥','STREAK 7','Treine 7 dias seguidos.',st.streak>=7],['🛡️','UPPER MASTER','Conclua 10 treinos.',st.workouts>=10],['🏆','IRON WILL','Conclua 20 treinos.',st.workouts>=20]];document.getElementById('achRows').innerHTML=a.map(x=>`<div class="card ach goldcard"><div class="achIcon">${x[0]}</div><div><h4>${x[1]}</h4><div class="muted">${x[2]}</div></div><div class="check">${x[3]?'✓':''}</div></div>`).join('')}
-function renderAll(){document.querySelectorAll('[data-level]').forEach(x=>x.textContent=st.level);document.querySelectorAll('[data-xp]').forEach(x=>x.textContent=st.xp);document.querySelectorAll('[data-streak]').forEach(x=>x.textContent=st.streak);document.querySelectorAll('[data-workouts]').forEach(x=>x.textContent=st.workouts);let w=(st.xp/500*100)+'%';document.getElementById('homeXp').style.width=w;document.getElementById('charXp').style.width=w;document.getElementById('progressXp').style.width=w;renderQuest();renderTimer();renderMuscles();renderAch()}
+function addXP(n){state.xp+=n;while(state.xp>=500){state.xp-=500;state.level++;toast('LEVEL UP! Lv. '+state.level)}}
+function setDone(i){let k=ex+'-'+i,w=!!state.done[k];state.done[k]=!w;addXP(w?-10:10);if(!w){secs=90;running=true;runTimer();toast('+10 XP')}save()}
+function renderSets(){let e=EX[ex];document.getElementById('exName').textContent=e.name;document.getElementById('exMuscle').textContent=e.muscle+' (principal)';document.getElementById('sets').innerHTML=e.sets.map((s,i)=>{let d=!!state.done[ex+'-'+i];return `<div class="setRow" style="margin-top:7px"><div class="cell">${i+1}</div><div class="cell">${s[0]}</div><div class="cell">${s[1]}</div><button class="cell check ${d?'done':''}" onclick="setDone(${i})">${d?'✓':'○'}</button></div>`}).join('')}
+function prevEx(){ex=Math.max(0,ex-1);renderSets()}function nextEx(){ex=Math.min(EX.length-1,ex+1);renderSets()}
+function runTimer(){clearInterval(intv);if(!running)return;intv=setInterval(()=>{secs--;if(secs<=0){secs=90;running=false;clearInterval(intv)}renderTimer()},1000)}
+function toggleTimer(){running=!running;runTimer();renderTimer()}function renderTimer(){let m=String(Math.floor(secs/60)).padStart(2,'0'),s=String(secs%60).padStart(2,'0');document.getElementById('timer').textContent=m+':'+s;document.getElementById('timerBtn').textContent=running?'Ⅱ':'▶'}
+function completeQuest(){let total=EX.reduce((a,e)=>a+e.sets.length,0),done=Object.values(state.done).filter(Boolean).length;if(done<total){toast('Complete todas as séries primeiro.');return}addXP(150);state.workouts++;state.streak++;state.done={};ex=0;save();go('PROGRESS');toast('QUEST COMPLETE! +150 XP')}
+function adjust(m,d){state.focus[m]=Math.max(1,Math.min(20,state.focus[m]+d));save()}
+function renderMuscles(){document.getElementById('muscles').innerHTML=Object.entries(state.focus).map(([m,v])=>`<div class="row"><div>${m}</div><div>Lv.${v}</div><div class="segments">${Array.from({length:10},(_,i)=>`<i class="seg ${i<Math.round(v/2)?'on':''}"></i>`).join('')}</div><button class="pm" onclick="adjust('${m}',-1)">−</button><button class="pm" onclick="adjust('${m}',1)">+</button></div>`).join('')}
+function renderVolumes(){let vals={Peitoral:12.5,Ombros:10.2,Costas:8.0,Braços:9.1,Core:4.3,Quadríceps:11.8,Glúteos:9.6,Posteriores:8.9,Panturrilhas:3.1};document.getElementById('volumes').innerHTML=Object.entries(vals).map(([m,v])=>`<div style="display:grid;grid-template-columns:90px 1fr 44px;gap:8px;align-items:center;margin:10px 0"><div class="small">${m}</div><div class="bar"><div class="fill green" style="width:${v/13*100}%"></div></div><div class="small">${v}t</div></div>`).join('')}
+function renderAchievements(){let a=[['🏋️','PRIMEIRO TREINO','Conclua seu primeiro treino.',true],['🔥','STREAK 3','Treine 3 dias seguidos.',state.streak>=3],['🔥','STREAK 7','Treine 7 dias seguidos.',state.streak>=7],['🛡️','UPPER MASTER','Conclua 10 treinos de superiores.',state.workouts>=10],['🏆','IRON WILL','Conclua 20 treinos.',state.workouts>=20],['👹','BEAST MODE','Complete a campanha The Beginning.',false]];document.getElementById('achievements').innerHTML=a.map(x=>`<div class="card gold ach"><div class="achIcon">${x[0]}</div><div><h4>${x[1]}</h4><div class="small">${x[2]}</div></div><div class="ok">${x[3]?'✓':''}</div></div>`).join('')}
+function renderAll(){document.querySelectorAll('[data-xp]').forEach(x=>x.textContent=state.xp);document.querySelectorAll('[data-workouts]').forEach(x=>x.textContent=state.workouts);document.querySelectorAll('[data-streak]').forEach(x=>x.textContent=state.streak);let w=(state.xp/500*100)+'%';document.getElementById('charXp').style.width=w;document.getElementById('progressXp').style.width=w;renderSets();renderTimer();renderMuscles();renderVolumes();renderAchievements()}
 renderAll();if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});
 </script>
-</body></html>
+</body>
+</html>
